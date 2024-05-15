@@ -74,7 +74,7 @@ include '../db.php';
                    
                     $selectUserSql = "SELECT DISTINCT u.user_id as UserID, u.username as Username, SUM(h.amount) TotalAmount, MAX(h.datetime) as LastHistoryDT 
                                         FROM php7test_db.Users u LEFT JOIN php7test_db.Histories h ON u.user_id = h.user_id 
-                                        WHERE u.active=1 and h.active=1 AND h.country ='" . $selectedCountry . "' GROUP BY u.user_id, u.username ORDER BY u.username";
+                                        WHERE u.active=1 and h.active=1 AND h.country LIKE '%" . $selectedCountry . "' GROUP BY u.user_id, u.username ORDER BY u.username";
                     $stmt = $mysqli->query($selectUserSql);
                     //$stmt->bind_param('s', $selectedCountry);
             
