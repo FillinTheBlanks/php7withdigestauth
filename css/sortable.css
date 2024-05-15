@@ -1,0 +1,35 @@
+/* CSS IS OPTIONAL - FOR COSMETICS ONLY */
+/* FEEL FREE TO CREATE YOUR OWN STYLES & DISCARD THIS */
+
+/* (A) SORTABLE TABLE */
+.sorta { border-collapse: collapse; }
+
+/* (B) CELLS */
+.sorta td, .sorta th {
+  padding: 10px;
+  text-align: left;
+}
+
+/* (C) HEADER */
+.sorta thead {
+  font-weight: 700;
+  color: #fff;
+  background: #000;
+}
+.sorta thead *::selection { background: none; }
+
+/* (D) BODY */
+.sorta tbody tr:nth-child(even) { background: #f2f2f2; }
+
+/* (E) UP/DOWN COLORS */
+.sortup { background: #a11010; }
+.sortdown { background: #2c2cf9; }
+.sortup::before, .sortdown::before { padding-right: 5px; }
+.sortup::before { content: "\21E7"; }
+.sortdown::before { content: "\21E9"; }
+
+/* (X) DOES NOT MATTER */
+* {
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+}
