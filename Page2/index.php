@@ -44,10 +44,9 @@ include '../db.php';
 
                     
                     <form class="form-group" method='post' style="margin-bottom: -5px;">
-                          Start Date <input class="form-group" type='date' class='dateFilter' name='dateFrom' value='<?php if(isset($_POST['dateFrom'])) echo $_POST['dateFrom']; ?>'>
+                    Start Date <input class="form-group" type='date' class='dateFilter' name='dateFrom' value='<?php if(isset($_POST['dateFrom'])) {echo $_POST['dateFrom']; }else{ echo date('Y-m-d',time());} ?>'>
 
-                          End Date <input class="form-group" type='date' class='dateFilter' name='dateTo' value='<?php if(isset($_POST['dateTo'])) echo $_POST['dateTo']; ?>'>
-
+                    End Date <input class="form-group" type='date' class='dateFilter' name='dateTo' value='<?php if(isset($_POST['dateTo'])) { echo $_POST['dateTo']; }else{ echo date('Y-m-d',time());} ?>'>
                           <input type='submit' name='but_search' value='Search'>
                     </form> 
                     </div>
@@ -65,14 +64,15 @@ include '../db.php';
                 <tbody>
 
                 <?php
+                    if($dateFrom=='' && $dateTo =='') {
+                        $_POST['dateFrom'] = date('Y-m-d',time());
+                        $_POST['dateTo'] = date('Y-m-d',time());
+                    }  
                     $selectedCountry =  $_REQUEST['country'];
                     $dateFrom = date('Y-m-d', strtotime($_POST['dateFrom']));
                     $dateTo = date('Y-m-d', strtotime($_POST['dateTo']));
                     
-                    if($dateFrom=='' && $dateTo =='') {
-                        $dateFrom = date('Y-m-d',strtotime(time()));
-                        $dateTo = date('Y-m-d',strtotime(time()));
-                    }    
+                      
                    
                     $selectUserSql = "SELECT DISTINCT u.user_id as UserID, u.username as Username, SUM(h.amount) TotalAmount, MAX(h.datetime) as LastHistoryDT 
                                         FROM php7test_db.Users u LEFT JOIN php7test_db.Histories h ON u.user_id = h.user_id 

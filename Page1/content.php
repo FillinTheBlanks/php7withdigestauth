@@ -20,9 +20,9 @@
 
                     
                     <form class="form-group" method='post' style="margin-bottom: -5px;">
-                          Start Date <input class="form-group" type='date' class='dateFilter' name='dateFrom' value='<?php if(isset($_POST['dateFrom'])) echo $_POST['dateFrom']; ?>'>
+                          Start Date <input class="form-group" type='date' class='dateFilter' name='dateFrom' value='<?php if(isset($_POST['dateFrom'])) {echo $_POST['dateFrom']; }else{ echo date('Y-m-d',time());} ?>'>
 
-                          End Date <input class="form-group" type='date' class='dateFilter' name='dateTo' value='<?php if(isset($_POST['dateTo'])) echo $_POST['dateTo']; ?>'>
+                          End Date <input class="form-group" type='date' class='dateFilter' name='dateTo' value='<?php if(isset($_POST['dateTo'])) { echo $_POST['dateTo']; }else{ echo date('Y-m-d',time());} ?>'>
 
                           <input type='submit' name='but_search' value='Search'>
                     </form> 
@@ -45,8 +45,8 @@
                     $dateTo = date('Y-m-d', strtotime($_POST['dateTo']));
                     
                     if($dateFrom=='' && $dateTo =='') {
-                        $dateFrom = date('Y-m-d',strtotime(time()));
-                        $dateTo = date('Y-m-d',strtotime(time()));
+                        $_POST['dateFrom'] = date('Y-m-d',time());
+                        $_POST['dateTo'] = date('Y-m-d',time());
                     }    
                    
                     $selectUserSql = "SELECT h.country as Country, SUM(h.amount) as ActiveUsersAmount, MAX(datetime) as LastHistoryDT, COUNT(DISTINCT u.user_id) as UniqueUsers
