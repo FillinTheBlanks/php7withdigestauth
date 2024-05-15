@@ -109,11 +109,11 @@ function FilterUsername(str) {
   // Declare variables
   var input, filter, table, tr, td, i, txtValue;
 
-  filter = str;
+  filter = document.getElementById("searchField").value;
   table = document.getElementById("main-table");
   tr = table.getElementsByTagName("tr");
 
-  if(str.length == 0) {
+  if(filter.length == 0) {
     sortable(document.getElementById("main-table"));
   }
   // Loop through all table rows, and hide those who don't match the search query
@@ -135,7 +135,7 @@ function FilterDateRange(str) {
   var input, filterDate,filterCountry, table, tr, td,td2, i, txtValue;
 
   filterDate = document.getElementById("searchField").value;
-  filterCountry = document.getElementById("countries").value;
+
   table = document.getElementById("main-table");
   tr = table.getElementsByTagName("tr");
 
@@ -147,17 +147,12 @@ function FilterDateRange(str) {
     filterDate = year.toString() + '-' + month.toString();
   }
 
-  if(filterCountry.length == 0) {
-    sortable(document.getElementById("main-table"));
-  } 
-
-
   // Loop through all table rows, and hide those who don't match the search query
   for (i = 0; i < tr.length; i++) {
-    td2 = tr[i].getElementsByTagName("td")[2];
+    td = tr[i].getElementsByTagName("td")[2];
     
-    if (td2) {
-      txtValue = td2.textContent || td2.innerText;
+    if (td) {
+      txtValue = td.textContent || td.innerText;
       if (txtValue.toUpperCase().indexOf(filterDate) > -1) {
         tr[i].style.display = "";
       } else {
