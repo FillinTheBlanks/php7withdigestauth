@@ -1,5 +1,7 @@
 <?php  
 
+require '../auth.php';
+
 session_start();
 
 include '../db.php';
