@@ -34,9 +34,10 @@ include '../db.php';
 				
 						<div class="overlay"><div class="loader"></div></div> 
                                    <h1> Welcome to my Sample Project using PHP 7 and Digest Auth and with no framework. </h1>
-                                   <p class="mt-5 mb-3 text-muted">Kevin Llupar Dev &copy; 2024</p>
+                                   
 
                                    <?php include '../Page1/content.php'; ?>
+                                   <p class="mt-5 mb-3 text-muted">Kevin Llupar Dev &copy; 2024</p>
                               </div>
           </div>
      </body>
