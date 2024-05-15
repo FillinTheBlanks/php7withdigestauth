@@ -26,7 +26,7 @@ $selectUserSql = "SELECT COUNT(user_id) rowcount FROM Users";
     $stmt->close();
 
 // Generate random user data
-if($rowcount >= $numberOfUsers) {
+if($rowcount <= $numberOfUsers) {
 $users = [];
 for ($i = 0; $i < $numberOfUsers; $i++) {
     $name = generateRandomName();
