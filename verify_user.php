@@ -10,8 +10,7 @@ session_start();
 		$id = null;
 		$selectUserSql = "SELECT user_id FROM `Users` WHERE  `username` = '".$username."' AND `active`=1 ";
 		$stmt = $mysqli->query($selectUserSql);
-    	//$stmt->bind_param('s', $username);
-		
+
 		$rows = $stmt->fetch_all(MYSQLI_ASSOC);
 		foreach ($rows as $row) {
 			$id = $row['user_id'];

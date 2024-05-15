@@ -8,19 +8,12 @@ $username = "root";
 $password = "123abc";
 $dbname = "php7test_db";
  
-//$connect = mysqli_connect($host, $username, $password, $dbname) or die("Connection failed: " . mysqli_connect_error());
-
 $mysqli = new mysqli($host, $username, $password, $dbname);
 
 // Check connection
 if ($mysqli->connect_error) {
     die("Connection failed: " . $mysqli->connect_error);
 }
-/* check connection */
-//if (mysqli_connect_errno()) {
-//    echo "Connect failed: %s\n", mysqli_connect_error();
-//    exit();
-//}
 
 try {
     $db = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
