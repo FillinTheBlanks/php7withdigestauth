@@ -38,7 +38,7 @@ include '../db.php';
           <div class="container" style="width:100%;padding-top:10px;"> 
           <div class="table-responsive m-t-10">
 			<div class="overlay"><div class="loader"></div></div> 
-            <h5>List of Users in <?php echo $_REQUEST['country'] ?></h5>
+            <h5>List of Users in <?php if(isset($_REQUEST['country'])) { echo $_REQUEST['country']; } else { echo 'All Countries';} ?></h5>
                 <label for='countries'>Username:</label>
                     <input type='text' id='searchField' onkeyup='FilterUsername(this.value)' />
 
